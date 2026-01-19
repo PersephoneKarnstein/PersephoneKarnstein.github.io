@@ -1,0 +1,171 @@
+/* Tag Filter Dropdown - matches search bar aesthetic */
+
+/* Fix nav overflow to allow dropdown to extend beyond nav bar */
+.nav {
+  overflow: visible !important;
+}
+
+.tag-filter-wrapper {
+  position: relative;
+  margin-left: 0.5rem;
+  z-index: 1001;
+}
+
+.tag-filter-icon {
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  border-radius: 4px;
+}
+
+.tag-filter-icon:hover {
+  color: #333;
+}
+
+.tag-filter-icon.active {
+  color: #333;
+  background: #f0f0f0;
+}
+
+/* Dropdown container */
+.tag-filter-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  margin-top: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+}
+
+/* Show dropdown on hover */
+.tag-filter-wrapper:hover .tag-filter-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown items */
+.tag-filter-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.tag-filter-item:last-child {
+  border-bottom: none;
+}
+
+.tag-filter-item:hover {
+  background: #f8f8f8;
+}
+
+.tag-filter-item.selected {
+  background: #f0f0f0;
+  font-weight: 600;
+}
+
+.tag-filter-item.selected::before {
+  content: "●";
+  font-size: 0.4rem;
+  margin-right: 0.5rem;
+  color: #666;
+  vertical-align: middle;
+}
+
+.tag-count {
+  font-size: 0.75rem;
+  color: #888;
+  background: #f0f0f0;
+  padding: 0.15rem 0.4rem;
+  border-radius: 10px;
+  margin-left: 0.5rem;
+}
+
+/* All Posts item styling */
+.tag-filter-all {
+  font-style: italic;
+  color: #666;
+}
+
+.tag-filter-all.selected {
+  color: #333;
+}
+
+/* Active filter indicator on icon */
+.tag-filter-icon.filtering::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  background: #666;
+  border-radius: 50%;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .tag-filter-dropdown {
+    min-width: 140px;
+    max-height: 50vh;
+  }
+
+  .tag-filter-item {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Scrollbar styling */
+.tag-filter-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tag-filter-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tag-filter-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+/* Filtered post animations */
+.catalogue-item {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.catalogue-item.filtered-out {
+  display: none;
+}
+
+/* No results message */
+.tag-filter-no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+  font-size: 0.95rem;
+}

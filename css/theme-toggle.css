@@ -1,0 +1,41 @@
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5em;
+  color: #666;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+}
+
+.theme-toggle:focus {
+  outline: none;
+}
+
+/* Light mode - dim lightbulb */
+.theme-toggle .fa-lightbulb {
+  color: #666;
+}
+
+/* Dark mode via system preference - bright lightbulb */
+@media (prefers-color-scheme: dark) {
+  .theme-toggle .fa-lightbulb {
+    color: #ffd700;
+  }
+}
+
+/* Manual dark mode - bright lightbulb */
+[data-theme="dark"] .theme-toggle .fa-lightbulb {
+  color: #ffd700;
+}
+
+/* Manual light mode - dim lightbulb (override system dark) */
+[data-theme="light"] .theme-toggle .fa-lightbulb {
+  color: #666;
+}
